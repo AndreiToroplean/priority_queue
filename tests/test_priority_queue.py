@@ -18,8 +18,19 @@ class TestPriorityQueue:
 
         assert queue.get() == {'command': 'command_a', 'priority': 1}
 
+    def test_queue_is_empty_before_put_and_after_get(self):
+        queue = PriorityQueue()
+
+        assert queue.is_empty()
+
+        queue.put({'command': 'command_a', 'priority': 1})
+        queue.get()
+
+        assert queue.is_empty()
+
     def test_get_from_empty_queue(self):
         queue = PriorityQueue()
+
         assert queue.get() is None
 
     @pytest.mark.parametrize('invalid_value', [

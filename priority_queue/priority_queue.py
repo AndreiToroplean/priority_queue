@@ -2,7 +2,7 @@ class PriorityQueue:
     """A priority queue that can store dicts with a "command" and "priority" keys.
 
     If two items have the same priority, the first item put in the queue will be the first item out
-    of the queue.
+    of the queue (first in first out).
     """
     def __init__(self):
         self._queue = []
@@ -48,3 +48,7 @@ class PriorityQueue:
         highest_priority = max(self._queue, key=lambda item: item['priority'])
         self._queue.remove(highest_priority)
         return highest_priority
+
+    def is_empty(self) -> bool:
+        """Return True if the queue is empty, False otherwise."""
+        return not self._queue
